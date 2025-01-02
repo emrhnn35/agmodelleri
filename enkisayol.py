@@ -1,8 +1,7 @@
 import networkx as nx
 
-
 G = nx.DiGraph()
-edges = [
+kenarlar = [
     ("A", "B", 6),
     ("A", "D", 1),
     ("B", "C", 5),
@@ -13,13 +12,12 @@ edges = [
     ("E", "F", 3)
 ]
 
-
-G.add_weighted_edges_from(edges)
-shortest_path = nx.single_source_dijkstra_path(G, source="A")
-shortest_path_length = nx.single_source_dijkstra_path_length(G, source="A")
+G.add_weighted_edges_from(kenarlar)
+en_kisa_yol = nx.single_source_dijkstra_path(G, source="A")
+en_kisa_yol_uzunlugu = nx.single_source_dijkstra_path_length(G, source="A")
 print("En Kısa Yollar:")
-for target, path in shortest_path.items():
-    print(f"A -> {target}: {path}")
+for hedef, yol in en_kisa_yol.items():
+    print(f"A -> {hedef}: {yol}")
 print("\nEn Kısa Mesafeler:")
-for target, distance in shortest_path_length.items():
-    print(f"A -> {target}: {distance}")
+for hedef, mesafe in en_kisa_yol_uzunlugu.items():
+    print(f"A -> {hedef}: {mesafe}")
